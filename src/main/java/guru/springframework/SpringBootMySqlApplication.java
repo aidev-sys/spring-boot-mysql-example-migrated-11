@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Main entry point for the Spring Boot application.
- * Configures default properties to ensure the correct PostgreSQL driver
- * and a fallback physical naming strategy that is always available.
+ * Configures default properties to ensure the correct PostgreSQL driver,
+ * connection details, and a fallback physical naming strategy that is always available.
  */
 @SpringBootApplication
 public class SpringBootMySqlApplication {
@@ -19,6 +19,10 @@ public class SpringBootMySqlApplication {
         Map<String, Object> defaultProps = new HashMap<>();
         // Explicitly set PostgreSQL driver to avoid legacy MySQL driver lookup
         defaultProps.put("spring.datasource.driver-class-name", "org.postgresql.Driver");
+        // Ensure the application connects to the correct PostgreSQL database
+        defaultProps.put("spring.datasource.url", "jdbc:postgresql://localhost:5432/postgres");
+        defaultProps.put("spring.datasource.username", "postgres");
+        defaultProps.put("spring.datasource.password", "postgres");
         // Use a standard physical naming strategy that is guaranteed to exist
         defaultProps.put("spring.jpa.hibernate.naming.physical-strategy",
                 "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl");

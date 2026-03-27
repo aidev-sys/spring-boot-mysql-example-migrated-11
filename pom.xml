@@ -23,16 +23,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
+        <postgresql.version>42.7.3</postgresql.version>
     </properties>
 
     <dependencies>
-        <!-- Core Spring Boot starter (autoconfigure, logging, etc.) -->
+        <!-- Core Spring Boot starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- Spring Data JPA (Hibernate) -->
+        <!-- Spring Data JPA (includes Hibernate and JDBC) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -72,6 +73,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
 
         <!-- Test support -->
