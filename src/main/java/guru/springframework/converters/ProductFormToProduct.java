@@ -14,13 +14,30 @@ public class ProductFormToProduct implements Converter<ProductForm, Product> {
 
     @Override
     public Product convert(ProductForm productForm) {
-        Product product = new Product();
-        if (productForm.getId() != null  && !StringUtils.isEmpty(productForm.getId())) {
-            product.setId(new Long(productForm.getId()));
+        return convert(productForm, new Product());
+    }
+
+    /**
+     * Converts a {@link ProductForm} into a {@link Product} and populates the provided target instance.
+     * This overload is useful when callers need to update an existing {@link Product} rather than create a new one.
+     *
+     * @param productForm source form, never {@code null}
+     * @param target      target product to populate, never {@code null}
+     * @return the populated {@link Product} instance (the same as {@code target})
+     */
+    public Product convert(ProductForm productForm, Product target) {
+        if (productForm == null) {
+            return null;
         }
-        product.setDescription(productForm.getDescription());
-        product.setPrice(productForm.getPrice());
-        product.setImageUrl(productForm.getImageUrl());
-        return product;
+
+        if (productForm.getId() != null && !StringUtils.isEmpty(productForm.getId())) {
+            target.setId(productForm.getId());
+        }
+
+        target.setDescription(productForm.getDescription());
+        target.setPrice(productForm.getPrice());
+        target.setImageUrl(productForm.getImageUrl());
+
+        return target;
     }
 }
