@@ -4,7 +4,6 @@ import guru.springframework.commands.ProductForm;
 import guru.springframework.domain.Product;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 /**
  * Created by jt on 1/10/17.
@@ -30,7 +29,7 @@ public class ProductFormToProduct implements Converter<ProductForm, Product> {
             return null;
         }
 
-        if (productForm.getId() != null && !StringUtils.isEmpty(productForm.getId())) {
+        if (productForm.getId() != null) {
             target.setId(productForm.getId());
         }
 

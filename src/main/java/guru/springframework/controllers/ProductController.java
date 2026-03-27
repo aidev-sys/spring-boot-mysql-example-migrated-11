@@ -11,8 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 /**
  * Created by jt on 1/10/17.
@@ -50,7 +49,7 @@ public class ProductController {
         return "product/show";
     }
 
-    @RequestMapping("product/edit/{id}")
+    @RequestMapping("/product/edit/{id}")
     public String edit(@PathVariable String id, Model model){
         Product product = productService.getById(Long.valueOf(id));
         ProductForm productForm = productToProductForm.convert(product);
